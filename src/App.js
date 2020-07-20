@@ -25,8 +25,6 @@ const tttMachine = createMachine(
                   if (index === event.cell) {
                     return 'x';
                   }
-
-                  // otherwise...
                   return cell;
                 })
               }
@@ -70,29 +68,21 @@ function App() {
         <p>
           Tic-Tac-Jen 🍩
         </p>
-
         <h2>
-          {/* Make this say "X's turn" or "O's turn" */}
           {state.value.toUpperCase()} 's Turn
         </h2>
-
         <div className='board'>
           {state.context.board.map((played, i) => {
-            // whenever a button is pressed, send "PLAY"
             return <button
               className="cell"
               key={i}
               onClick={() => {
-                // { type: "PLAY", cell: 2 }
                 send({ type: 'PLAY', cell: i })
-
               }}>
-              {/* the 5th item in state.context.board */}
               {state.context.board[i]}
             </button>
           })}
         </div>
-
       </header>
     </div>
   );
